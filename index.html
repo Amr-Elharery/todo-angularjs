@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ToDoApp">
+<html lang="en">
   <head>
     <title>ToDo App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="lib/angular.min.js"></script>
     <script type="text/javascript" src="lib/angular-route.min.js"></script>
     <script type="text/javascript" src="lib/angular-animate.min.js"></script>
-    <script src="app/app.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="main" ng-app="myList" ng-controller="myListController">
+      <h1>Todo List</h1>
+      <div class="addItem">
+        <input
+          type="text"
+          placeholder="Add Activity"
+          class="addText"
+          ng-model="newItem"
+        />
+        <button ng-click="pushItem()">Add</button>
+      </div>
+
+      <p ng-show="items.length === 0">No Items to Show.</p>
+      <ul>
+        <li ng-repeat="i in items">
+          {{i}} <span class="delete" ng-click="deleteItem(i)">X</span>
+        </li>
+      </ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
